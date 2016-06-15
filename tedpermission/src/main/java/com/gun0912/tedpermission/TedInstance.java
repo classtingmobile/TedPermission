@@ -58,7 +58,7 @@ public class TedInstance {
     }
 
 
-    @Subscribe
+//    @Subscribe
     public void onPermissionResult(TedPermissionEvent event) {
         Dlog.d("TedInstance onPermissionResult");
         if (event.hasPermission()) {

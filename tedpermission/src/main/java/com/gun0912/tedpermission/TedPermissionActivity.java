@@ -113,14 +113,16 @@ public class TedPermissionActivity extends AppCompatActivity {
 
     private void permissionGranted() {
         Dlog.w("pemission granded completed");
-        TedBusProvider.getInstance().post(new TedPermissionEvent(true, null));
+//        TedBusProvider.getInstance().post(new TedPermissionEvent(true, null));
+        TedPermission.instance.onPermissionResult(new TedPermissionEvent(true, null));
         finish();
         overridePendingTransition(0, 0);
     }
 
     private void permissionDenied(ArrayList<String> deniedpermissions) {
         Dlog.w("pemission denied completed");
-        TedBusProvider.getInstance().post(new TedPermissionEvent(false, deniedpermissions));
+//        TedBusProvider.getInstance().post(new TedPermissionEvent(false, deniedpermissions));
+        TedPermission.instance.onPermissionResult(new TedPermissionEvent(false, deniedpermissions));
         finish();
         overridePendingTransition(0, 0);
     }
@@ -197,7 +199,7 @@ public class TedPermissionActivity extends AppCompatActivity {
 
         Dlog.d("1");
         Dlog.d("permission.length : " + permissions.length);
-        
+
         for (int i = 0; i < permissions.length; i++) {
             Dlog.d("2");
             String permission = permissions[i];

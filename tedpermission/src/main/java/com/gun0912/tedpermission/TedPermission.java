@@ -13,7 +13,7 @@ import com.gun0912.tedpermission.util.ObjectUtils;
 public class TedPermission {
 
 
-    private static TedInstance instance;
+    public static TedInstance instance;
 
 
     public TedPermission(Context context) {
