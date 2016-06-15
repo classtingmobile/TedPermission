@@ -60,7 +60,7 @@ public class TedInstance {
 
     @Subscribe
     public void onPermissionResult(TedPermissionEvent event) {
-        Dlog.d("");
+        Dlog.d("TedInstance onPermissionResult");
         if (event.hasPermission()) {
             listener.onPermissionGranted();
         } else {

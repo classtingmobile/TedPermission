@@ -61,7 +61,7 @@ public class TedPermissionActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Dlog.d("");
+        Dlog.d("TedPermissionActivity onResume");
     }
 
     private void setupFromSavedInstanceState(Bundle savedInstanceState) {
@@ -112,12 +112,14 @@ public class TedPermissionActivity extends AppCompatActivity {
 
 
     private void permissionGranted() {
+        Dlog.w("pemission granded completed");
         TedBusProvider.getInstance().post(new TedPermissionEvent(true, null));
         finish();
         overridePendingTransition(0, 0);
     }
 
     private void permissionDenied(ArrayList<String> deniedpermissions) {
+        Dlog.w("pemission denied completed");
         TedBusProvider.getInstance().post(new TedPermissionEvent(false, deniedpermissions));
         finish();
         overridePendingTransition(0, 0);
@@ -125,7 +127,7 @@ public class TedPermissionActivity extends AppCompatActivity {
 
 
     private void checkPermissions(boolean fromOnActivityResult) {
-        Dlog.d("");
+        Dlog.d("TedPermissionActivity checkPermissions!!");
 
         ArrayList<String> needPermissions = new ArrayList<>();
 
@@ -190,7 +192,7 @@ public class TedPermissionActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
-        Dlog.d("");
+        Dlog.d("onRequestPermissionResult");
         ArrayList<String> deniedPermissions = new ArrayList<>();
 
 
@@ -205,9 +207,10 @@ public class TedPermissionActivity extends AppCompatActivity {
         }
 
         if (deniedPermissions.isEmpty()) {
+            Dlog.d("diniedPermissions is empty");
             permissionGranted();
         } else {
-
+            Dlog.d("diniedPermissions is not empty");
 
             showPermissionDenyDialog(deniedPermissions);
 
