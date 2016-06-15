@@ -195,17 +195,21 @@ public class TedPermissionActivity extends AppCompatActivity {
         Dlog.d("onRequestPermissionResult");
         ArrayList<String> deniedPermissions = new ArrayList<>();
 
-
+        Dlog.d("1");
+        Dlog.d("permission.length : " + permissions.length);
+        
         for (int i = 0; i < permissions.length; i++) {
+            Dlog.d("2");
             String permission = permissions[i];
             if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
-
+                Dlog.d("3");
 
                 deniedPermissions.add(permission);
 
             }
         }
 
+        Dlog.d("4");
         if (deniedPermissions.isEmpty()) {
             Dlog.d("diniedPermissions is empty");
             permissionGranted();
