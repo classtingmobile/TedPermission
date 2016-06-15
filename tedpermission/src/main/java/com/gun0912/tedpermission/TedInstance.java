@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.gun0912.tedpermission.busevent.TedBusProvider;
 import com.gun0912.tedpermission.busevent.TedPermissionEvent;
 import com.gun0912.tedpermission.util.Dlog;
+import com.squareup.otto.Subscribe;
 
 /**
  * Created by TedPark on 16. 2. 17..
@@ -28,7 +29,7 @@ public class TedInstance {
 
         this.context = context;
 
-//        TedBusProvider.getInstance().register(this);
+        TedBusProvider.getInstance().register(this);
 
         deniedCloseButtonText = context.getString(R.string.tedpermission_close);
         rationaleConfirmText = context.getString(R.string.tedpermission_confirm);
@@ -57,7 +58,7 @@ public class TedInstance {
     }
 
 
-//    @Subscribe
+    @Subscribe
     public void onPermissionResult(TedPermissionEvent event) {
         Dlog.d("TedInstance onPermissionResult");
         if (event.hasPermission()) {
@@ -65,7 +66,7 @@ public class TedInstance {
         } else {
             listener.onPermissionDenied(event.getDeniedPermissions());
         }
-//        TedBusProvider.getInstance().unregister(this);
+        TedBusProvider.getInstance().unregister(this);
 
 
     }
